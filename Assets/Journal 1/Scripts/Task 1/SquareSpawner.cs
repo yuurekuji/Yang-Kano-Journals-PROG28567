@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 public class SquareSpawner : MonoBehaviour
 {
@@ -17,7 +19,9 @@ public class SquareSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        unit += Input.mouseScrollDelta.y * 0.1f;
 
+        bool buttonDown = Input.GetMouseButtonDown(0);
 
         Vector2 mousePos = Input.mousePosition;
 
@@ -38,16 +42,18 @@ public class SquareSpawner : MonoBehaviour
         Debug.DrawLine(toprightcorner, bottomrightcorner, Color.grey);
         Debug.DrawLine(bottomrightcorner, bottomleftcorner, Color.grey);
 
-        if (Input.GetMouseButton(0))
+        if (buttonDown == true)
         {
-            Debug.DrawLine(topleftcorner, toprightcorner, Color.red);
-            Debug.DrawLine(topleftcorner, bottomleftcorner, Color.red);
-            Debug.DrawLine(toprightcorner, bottomrightcorner, Color.red);
-            Debug.DrawLine(bottomrightcorner, bottomleftcorner, Color.red);
+            Debug.DrawLine(topleftcorner, toprightcorner, Color.white, Mathf.Infinity);
+            Debug.DrawLine(topleftcorner, bottomleftcorner, Color.white, Mathf.Infinity);
+            Debug.DrawLine(toprightcorner, bottomrightcorner, Color.white, Mathf.Infinity);
+            Debug.DrawLine(bottomrightcorner, bottomleftcorner, Color.white, Mathf.Infinity);
         }
 
 
 
 
     }
+
+
 }
