@@ -55,10 +55,10 @@ public class RowGeneration : MonoBehaviour
 
             //Debug.DrawLine(origin, end, Color.white, Mathf.Infinity);
 
-            Debug.DrawLine(topleftcorner, toprightcorner, Color.white, Mathf.Infinity);
-            Debug.DrawLine(topleftcorner, bottomleftcorner, Color.white, Mathf.Infinity);
-            Debug.DrawLine(toprightcorner, bottomrightcorner, Color.white, Mathf.Infinity);
-            Debug.DrawLine(bottomrightcorner, bottomleftcorner, Color.white, Mathf.Infinity);
+            Debug.DrawLine(topleftcorner, toprightcorner, Color.white, 10);
+            Debug.DrawLine(topleftcorner, bottomleftcorner, Color.white, 10);
+            Debug.DrawLine(toprightcorner, bottomrightcorner, Color.white, 10);
+            Debug.DrawLine(bottomrightcorner, bottomleftcorner, Color.white, 10);
 
         } 
 
