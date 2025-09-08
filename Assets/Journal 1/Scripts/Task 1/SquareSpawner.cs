@@ -19,6 +19,9 @@ public class SquareSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Color NewTrans = new Color (1, 1, 1, 0.5f);
+        
         unit += Input.mouseScrollDelta.y * 0.1f;
 
         bool buttonDown = Input.GetMouseButtonDown(0);
@@ -37,10 +40,10 @@ public class SquareSpawner : MonoBehaviour
         float x = mousePos.x;
         float y = mousePos.y;
 
-        Debug.DrawLine(topleftcorner, toprightcorner, Color.grey);
-        Debug.DrawLine(topleftcorner, bottomleftcorner, Color.grey);
-        Debug.DrawLine(toprightcorner, bottomrightcorner, Color.grey);
-        Debug.DrawLine(bottomrightcorner, bottomleftcorner, Color.grey);
+        Debug.DrawLine(topleftcorner, toprightcorner, NewTrans);
+        Debug.DrawLine(topleftcorner, bottomleftcorner, NewTrans);
+        Debug.DrawLine(toprightcorner, bottomrightcorner, NewTrans);
+        Debug.DrawLine(bottomrightcorner, bottomleftcorner, NewTrans);
 
         if (buttonDown == true)
         {
