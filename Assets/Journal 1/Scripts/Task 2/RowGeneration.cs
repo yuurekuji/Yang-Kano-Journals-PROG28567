@@ -32,7 +32,7 @@ public class RowGeneration : MonoBehaviour
     public void parsedinput()
     {
 
-        if(int.TryParse(userinput, out int num))
+        if(int.TryParse(userinput, out int num) && num > 0 )
         {
             Debug.Log(num);
         }
@@ -46,6 +46,7 @@ public class RowGeneration : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             Vector2 origin = new Vector2(i, 0);
+
             //Vector2 end = new Vector2(i, 1);
 
             Vector2 topleftcorner = new Vector2(origin.x - 0.5f, origin.y + 0.5f);
