@@ -17,8 +17,8 @@ public class Pipeline1 : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //int index = arrayMouse.size() - 1;
+    {  
+        int index = arrayMouse.Count - 1;
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -36,14 +36,14 @@ public class Pipeline1 : MonoBehaviour
             {
                 time = 0;
                 arrayMouse.Add(new Vector2(mousePos.x, mousePos.y));
-                Debug.DrawLine(mousePos, arrayMouse[1], Color.white, 20);
+                Debug.DrawLine(mousePos, arrayMouse[index], Color.white, 20);
             }
 
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-
+            // calculate magnitude pog
 
         }
     }
