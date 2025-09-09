@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
     public void SpawnBombAtOffSet(Vector3 inOffset)
     {
-        Instantiate(bombPrefab, transform.position+inOffset, Quaternion.identity);
+        Instantiate(bombPrefab, transform.position + inOffset, Quaternion.identity);
         
     }
 
