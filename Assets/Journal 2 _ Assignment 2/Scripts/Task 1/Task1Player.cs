@@ -11,6 +11,9 @@ public class Task1Player : MonoBehaviour
     public GameObject bombPrefab;
     public Transform bombsTransform;
 
+
+    public Vector2 bombOffset = new Vector2(0, 1);
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +27,11 @@ public class Task1Player : MonoBehaviour
         {
             SpawnBombAtOffSet(Vector3.up);
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+
+        }
     }
 
     // Create method for spawning a bomb at offset
@@ -32,7 +40,13 @@ public class Task1Player : MonoBehaviour
         Instantiate(bombPrefab, transform.position + inOffset, Quaternion.identity);
 
     }
+    
+    // Create a method for spawning a trail of bombs
 
+    public void SpawnBombTrail(float inBombSpacing, int inNumberOfBombs)
+    {
+
+    }
 
 
 }
