@@ -14,6 +14,10 @@ public class Task1Player : MonoBehaviour
 
     public Vector2 bombOffset = new Vector2(0, 1);
 
+    
+    public float bombTrailSpacing;
+    public int numberOftrailBombs;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,7 +34,7 @@ public class Task1Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-
+            SpawnBombTrail(bombTrailSpacing, numberOftrailBombs);
         }
     }
 
@@ -45,6 +49,11 @@ public class Task1Player : MonoBehaviour
 
     public void SpawnBombTrail(float inBombSpacing, int inNumberOfBombs)
     {
+        Vector3 spacing = new Vector2(0,inBombSpacing);
+        for (int i = 0; i< inNumberOfBombs; i++)
+        {
+            Instantiate(bombPrefab, transform.position - spacing, Quaternion.identity);
+        }
 
     }
 

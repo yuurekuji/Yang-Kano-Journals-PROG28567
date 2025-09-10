@@ -221,6 +221,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 1273894435109820, guid: b262926197932c945b68169dd6fd6c5c, type: 3}
   bombsTransform: {fileID: 4049822235980678, guid: b262926197932c945b68169dd6fd6c5c, type: 3}
+  bombOffset: {x: 0, y: 1}
+  bombTrailSpacing: 4
+  numberOftrailBombs: 2
 --- !u!1 &1072823413
 GameObject:
   m_ObjectHideFlags: 0
