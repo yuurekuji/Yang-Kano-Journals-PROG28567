@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Task1Player : MonoBehaviour
 {
@@ -49,10 +50,13 @@ public class Task1Player : MonoBehaviour
 
     public void SpawnBombTrail(float inBombSpacing, int inNumberOfBombs)
     {
-        Vector3 spacing = new Vector2(0,inBombSpacing);
+        Vector3 spacing = new Vector2(0,1);
+
         for (int i = 0; i< inNumberOfBombs; i++)
         {
             Instantiate(bombPrefab, transform.position - spacing, Quaternion.identity);
+            spacing.y += inBombSpacing;
+            
         }
 
     }

@@ -201,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 403131691}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.719629, y: -1.6132135, z: 0}
+  m_LocalPosition: {x: -1.719629, y: 2.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -222,8 +222,8 @@ MonoBehaviour:
   bombPrefab: {fileID: 1273894435109820, guid: b262926197932c945b68169dd6fd6c5c, type: 3}
   bombsTransform: {fileID: 4049822235980678, guid: b262926197932c945b68169dd6fd6c5c, type: 3}
   bombOffset: {x: 0, y: 1}
-  bombTrailSpacing: 4
-  numberOftrailBombs: 2
+  bombTrailSpacing: 0
+  numberOftrailBombs: 0
 --- !u!1 &1072823413
 GameObject:
   m_ObjectHideFlags: 0
