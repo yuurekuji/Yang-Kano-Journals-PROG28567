@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using System;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class Task2Player : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Task2Player : MonoBehaviour
     public Transform bombsTransform;
 
     public float distance;
+    public Vector3[] corners = new Vector3[4];
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,9 +33,16 @@ public class Task2Player : MonoBehaviour
 
     public void SpawnBombOnRandomCorner(float inDistance)
     {
+        corners[0] = new Vector3(-1, 1, 0).normalized * inDistance;
+        corners[1] = new Vector3(1, 1, 0).normalized * inDistance;
+        corners[2] = new Vector3(1, -1, 0).normalized * inDistance;
+        corners[3] = new Vector3(-1, -1, 0).normalized * inDistance;
 
-        Vector3 posOffset = new Vector3(1,1,0).normalized * inDistance;
-        Vector3 spawnPos = transform.position + posOffset;
+
+        int randomNumber = Random.Range(0, 4);
+
+        Vector3 spawnPos = transform.position + corners[randomNumber];
+
         Instantiate(bombPrefab, spawnPos, Quaternion.identity);
 
 
