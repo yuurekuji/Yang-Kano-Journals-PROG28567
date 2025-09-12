@@ -32,11 +32,11 @@ public class Task2Player : MonoBehaviour
     public void SpawnBombOnRandomCorner(float inDistance)
     {
 
-        float length = (inDistance * inDistance) / Mathf.Sqrt(2);
+        Vector3 posOffset = new Vector3(1,1,0).normalized * inDistance;
+        Vector3 spawnPos = transform.position + posOffset;
+        Instantiate(bombPrefab, spawnPos, Quaternion.identity);
 
-        Vector2 pos = new Vector2(-length, +length);
 
-        Instantiate(bombPrefab, pos, Quaternion.identity);
 
     }
 }
