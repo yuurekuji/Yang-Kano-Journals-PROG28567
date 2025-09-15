@@ -22,8 +22,12 @@ public class Task3Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-
-            WarpPlayer(enemyTransform, ratio);
+            if(ratio > 1)
+            {
+                ratio = 1;
+                WarpPlayer(enemyTransform, ratio);
+            }
+            
         }
     }
 
@@ -34,9 +38,11 @@ public class Task3Player : MonoBehaviour
         Vector2 direction = target.transform.position;
 
         
-        pos -= ((Vector2)transform.position - direction).normalized * ratio;
+        pos -= ((Vector2)transform.position - direction) * ratio;
 
         transform.position = pos;
 
+
+        
     }
 }
