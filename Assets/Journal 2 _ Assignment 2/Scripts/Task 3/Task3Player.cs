@@ -1,13 +1,13 @@
 using TMPro;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Task3Player : MonoBehaviour
 {
     public Transform enemyTransform;
-    public GameObject bombPrefab;
-    public Transform bombsTransform;
-    public TMP_InputField input;
+    //public TMP_InputField input;
 
+    public float ratio;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,14 +20,23 @@ public class Task3Player : MonoBehaviour
         Vector2 startPos = transform.position;
         Vector2 enemyPos = enemyTransform.position;
 
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            WarpPlayer(enemyTransform, 20);
+
+            WarpPlayer(enemyTransform, ratio);
         }
     }
 
     public void WarpPlayer(Transform target, float ratio)
     {
+
+        Vector2 pos = transform.position;
+        Vector2 direction = target.transform.position;
+
+        
+        pos -= ((Vector2)transform.position - direction).normalized * ratio;
+
+        transform.position = pos;
 
     }
 }
