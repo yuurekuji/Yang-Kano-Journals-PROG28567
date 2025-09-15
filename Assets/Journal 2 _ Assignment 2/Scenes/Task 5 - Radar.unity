@@ -248,6 +248,7 @@ MonoBehaviour:
   - {fileID: 1056543445}
   - {fileID: 1219293411}
   - {fileID: 934428268}
+  radar: 0
 --- !u!1001 &42958329
 PrefabInstance:
   m_ObjectHideFlags: 0
