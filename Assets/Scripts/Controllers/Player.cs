@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using TMPro;
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 public class Player : MonoBehaviour
 {
     public List<Transform> asteroidTransforms;
@@ -11,9 +13,33 @@ public class Player : MonoBehaviour
     public Transform bombsTransform;
     public TMP_InputField input;
 
+    public float speed = 3f;
+    public float maxSpeed = 2;
+    public float accelerationTime = 4;
+    public float acceleration;
+
+    Vector3 velocity = new Vector3(0, 0, 0);
+
+
+    private void Start()
+    {
+        acceleration = maxSpeed / accelerationTime;
+    }
     void Update()
     {
-    
+
+
+        playerMovement();
+        Debug.Log(velocity.x);
+
+
+
+
+
+
+
+
+
 
         Vector2 pos = transform.position;
 
@@ -46,7 +72,55 @@ public class Player : MonoBehaviour
     }
 
     //Create a method in the script
+    public void playerMovement()
+    {
 
+        Vector3 direction = Vector3.zero;
+        
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            direction += Vector3.left;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            direction += Vector3.right;
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            direction += Vector3.down;
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            direction += Vector3.up;
+        }
+        direction = direction.normalized;
+        velocity += direction * acceleration * Time.deltaTime;
+        transform.position += velocity;
+
+
+        if(velocity.x >= maxSpeed)
+        {
+            velocity.x = maxSpeed;
+        }
+        else if(velocity.x <= -maxSpeed)
+        {
+            velocity.x = -maxSpeed;
+        }
+
+        if (velocity.y >= maxSpeed)
+        {
+            velocity.y = maxSpeed;
+        }
+        else if( velocity.y <= -maxSpeed)
+        {
+            velocity.y = -maxSpeed;
+        }
+
+
+
+    }
     public void SpawnBombAtOffSet(Vector3 inOffset)
     {
         Instantiate(bombPrefab, transform.position + inOffset, Quaternion.identity);
