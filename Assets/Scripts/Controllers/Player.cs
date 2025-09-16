@@ -77,11 +77,12 @@ public class Player : MonoBehaviour
 
         Vector3 direction = Vector3.zero;
         
-
+        // Key down
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             direction += Vector3.left;
         }
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             direction += Vector3.right;
@@ -95,6 +96,26 @@ public class Player : MonoBehaviour
         {
             direction += Vector3.up;
         }
+
+        // when the key is released
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+
+        }
+
+
         direction = direction.normalized;
         velocity += direction * acceleration * Time.deltaTime;
         transform.position += velocity;
