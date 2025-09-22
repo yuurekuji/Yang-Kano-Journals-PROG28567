@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
 
     Vector3 velocity = new Vector3(0, 0, 0);
 
-
+    public float deccelerationTime = 4;
+    public bool isMoving = false;
     private void Start()
     {
         acceleration = maxSpeed / accelerationTime;
@@ -71,7 +72,9 @@ public class Player : MonoBehaviour
 
     }
 
-    //Create a method in the script
+    /// <summary>
+    ///  Player movement with acceleration and decceleration
+    /// </summary>
     public void playerMovement()
     {
 
@@ -80,39 +83,51 @@ public class Player : MonoBehaviour
         // Key down
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            isMoving = true;
             direction += Vector3.left;
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            isMoving = true;
             direction += Vector3.right;
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            direction += Vector3.down;
+            isMoving = true;
+
+            if (isMoving == true)
+            {
+                direction += Vector3.down;
+            }
+            
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
+            isMoving = true;
             direction += Vector3.up;
         }
 
-        // when the key is released
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
+        // when the key is not held down
 
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            
+       
         }
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
-
+            direction -= Vector3.right;
         }
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-
+            isMoving = false;
+            direction -= Vector3.down;
         }
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-
+            direction -= Vector3.up;
         }
 
 
