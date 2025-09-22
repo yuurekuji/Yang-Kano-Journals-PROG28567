@@ -20,7 +20,7 @@ public class Stars : MonoBehaviour
         {
             drawContellation();
         }
-        
+
     }
 
     public void drawContellation()
