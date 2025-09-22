@@ -21,10 +21,12 @@ public class Player : MonoBehaviour
     Vector3 velocity = new Vector3(0, 0, 0);
 
     public float deccelerationTime = 4;
+    public float decceleration;
     public bool isMoving = false;
     private void Start()
     {
         acceleration = maxSpeed / accelerationTime;
+        decceleration = (maxSpeed - velocity.magnitude) / deccelerationTime;
     }
     void Update()
     {
@@ -83,29 +85,25 @@ public class Player : MonoBehaviour
         // Key down
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            isMoving = true;
+
             direction += Vector3.left;
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            isMoving = true;
+
             direction += Vector3.right;
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            isMoving = true;
 
-            if (isMoving == true)
-            {
-                direction += Vector3.down;
-            }
+            direction += Vector3.down;
+
             
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            isMoving = true;
             direction += Vector3.up;
         }
 
@@ -113,8 +111,13 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
+            for(int i = 0; i < deccelerationTime; i++)
+            {
+                velocity += direction * decceleration;
+                transform.position += velocity;
+
+            }
             
-       
         }
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
@@ -122,7 +125,6 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            isMoving = false;
             direction -= Vector3.down;
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
