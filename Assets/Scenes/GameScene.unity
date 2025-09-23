@@ -325,6 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 249188486}
+  - component: {fileID: 249188487}
   m_Layer: 0
   m_Name: MathFunctions
   m_TagString: Untagged
@@ -347,6 +348,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &249188487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249188485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96240f4d7c708fb43acc448df74e6421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnglesInDegrees:
+  - 36
+  - 72
+  - 108
+  - 144
+  - 180
+  - 216
+  - 252
+  - 288
+  - 324
+  - 360
+  CurrentIndex: 0
+  radius: 1
+  circlePos: {x: 0, y: 0, z: 0}
+  time: 10
 --- !u!1001 &273080463
 PrefabInstance:
   m_ObjectHideFlags: 0
