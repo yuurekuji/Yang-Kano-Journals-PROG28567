@@ -22,26 +22,26 @@ public class TrigExcerise : MonoBehaviour
     void Update()
     {
 
-        for (int i = 0; i < AnglesInDegrees.Count; i++)
-        {
-            float degrees = AnglesInDegrees[i];
-            float radians = degrees * Mathf.Deg2Rad;
+        //for (int i = 0; i < AnglesInDegrees.Count; i++)
+        //{
+        //    float degrees = AnglesInDegrees[i];
+        //    float radians = degrees * Mathf.Deg2Rad;
 
 
-            float x = Mathf.Cos(radians);
-            float y = Mathf.Sin(radians);
+        //    float x = Mathf.Cos(radians);
+        //    float y = Mathf.Sin(radians);
 
-            Vector3 point = new Vector3(x, y, 0) * radius + circlePos;
+        //    Vector3 point = new Vector3(x, y, 0) * radius + circlePos;
 
 
 
-            Debug.DrawLine(circlePos, point, Color.white);
+        //    Debug.DrawLine(circlePos, point, Color.white);
 
-            if (i >= AnglesInDegrees.Count)
-            {
-                i = 0;
+        //    if (i >= AnglesInDegrees.Count)
+        //    {
+        //        i = 0;
 
-            }
-        }
+        //    }
+        //}
     }
 }
