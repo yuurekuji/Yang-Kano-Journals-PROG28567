@@ -45,19 +45,20 @@ public class Journal4Player : MonoBehaviour
 
         for (int p = 1; p < Points.Count; p++)
         {
+            float distance = Vector3.Distance(Enemy.transform.position, Player);
+
+            if (distance <= radius)
+            {
+                col = Color.red;
+            }
+            else
+            {
+                col = Color.green;
+            }
+
             Debug.DrawLine(Points[p-1], Points[p], col);
         }
 
-        float distance = Vector3.Distance(Enemy.transform.position, Player);
 
-        if(distance <= radius)
-        {
-            Debug.Log("sus");
-            col = Color.red;
-        }
-        else
-        {
-            col = Color.green;
-        }
     }
 }
