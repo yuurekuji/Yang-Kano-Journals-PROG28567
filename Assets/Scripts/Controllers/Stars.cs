@@ -23,11 +23,11 @@ public class Stars : MonoBehaviour
 
     }
 
+
     public IEnumerator IterateStarsLoop()
     {
         for (int i = 1; i < starTransforms.Count; i++)
         {
-
 
             Vector3 StartPos = starTransforms[i - 1].transform.position;
             Vector2 EndPos = starTransforms[i].transform.position;
@@ -36,16 +36,21 @@ public class Stars : MonoBehaviour
 
             Debug.DrawLine(StartPos, CurrentEndPos, Color.white);
 
-            yield return new WaitForSeconds(drawingTime);
+            yield return new WaitForSeconds(drawingTime/2);
 
         }
+    }
+
+    public IEnumerator masterCoroutine()
+    {   
+        yield return (StartCoroutine(IterateStarsLoop()));
     }
     public void drawConstellation()
     {
         
         progress += Time.deltaTime * drawingTime;
         progress = Mathf.Clamp01(progress);
-        StartCoroutine(IterateStarsLoop());
 
+        StartCoroutine(masterCoroutine());
     }
 }
