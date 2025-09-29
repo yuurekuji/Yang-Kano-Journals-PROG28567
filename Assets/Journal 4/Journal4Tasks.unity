@@ -717,6 +717,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetTransform: {fileID: 596075295216015943}
+  rad: 2
+  moveSpeed: 2
 --- !u!1 &8510377139729473031
 GameObject:
   m_ObjectHideFlags: 0
