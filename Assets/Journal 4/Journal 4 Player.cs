@@ -13,16 +13,24 @@ public class Journal4Player : MonoBehaviour
     public Vector3 Player;
 
     public Transform Enemy;
+
+    public int num;
+
+    public List<float> Angles = new List<float>();
+
+    public GameObject powerupPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Player = transform.position;
+ 
     }
 
     // Update is called once per frame
     void Update()
     {
         EnemyDetection();
+        SpawnPowerups(radius, num);
     }
 
     public void EnemyDetection()
@@ -60,5 +68,36 @@ public class Journal4Player : MonoBehaviour
         }
 
 
+    }
+
+    public void SpawnPowerups(float radius, int numberOfPowerups)
+    {
+        for(int p=0; p < numberOfPowerups; p++)
+        {
+            float DegreesOfAngles = 360/numberOfPowerups;
+
+            Angles.Add(DegreesOfAngles*p);
+            
+        }
+
+        for (int i = 0; i < Angles.Count; i++)
+        {
+            float degrees = Angles[i];
+            float radians = degrees * Mathf.Deg2Rad;
+
+
+            float x = Mathf.Cos(radians);
+            float y = Mathf.Sin(radians);
+
+            Vector3 point = new Vector3(x, y, 0) * radius + Player;
+
+             GameObject Powerup = Instantiate(powerupPrefab, point, Quaternion.identity);
+            Destroy(Powerup, 1f );
+
+            if(i>=Angles.Count)
+            {
+                return;
+            }
+        }
     }
 }
