@@ -239,7 +239,7 @@ MonoBehaviour:
   radius: 2
   Player: {x: 0, y: 0, z: 0}
   Enemy: {fileID: 2104004021}
-  num: 0
+  num: 6
   Angles: []
   powerupPrefab: {fileID: 1567431237259788, guid: 03444c0c59102ba46bb1a8b5a1b0a810, type: 3}
 --- !u!1 &2104004019
