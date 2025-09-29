@@ -23,14 +23,14 @@ public class Journal4Player : MonoBehaviour
     void Start()
     {
         Player = transform.position;
- 
+        SpawnPowerups(radius, num);
     }
 
     // Update is called once per frame
     void Update()
     {
         EnemyDetection();
-        SpawnPowerups(radius, num);
+
     }
 
     public void EnemyDetection()
@@ -91,8 +91,9 @@ public class Journal4Player : MonoBehaviour
 
             Vector3 point = new Vector3(x, y, 0) * radius + Player;
 
-             GameObject Powerup = Instantiate(powerupPrefab, point, Quaternion.identity);
-            Destroy(Powerup, 1f );
+            GameObject Powerup = Instantiate(powerupPrefab, point, Quaternion.identity);
+
+            Destroy(Powerup, 5f);
 
             if(i>=Angles.Count)
             {
