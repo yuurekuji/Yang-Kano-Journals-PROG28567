@@ -101,4 +101,5 @@ public class Journal4Player : MonoBehaviour
             }
         }
     }
+
 }
