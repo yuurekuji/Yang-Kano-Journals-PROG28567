@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -18,8 +19,10 @@ public class PlayerAttackScript : MonoBehaviour
 
     public bool isRecharging = false;
     public bool attackIsLive = false;
+    public bool lockedON = false;
 
     GameObject attack;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,6 +53,11 @@ public class PlayerAttackScript : MonoBehaviour
         if(attackIsLive == true)
         {
             MoveAttack(2, 2, enemy, attack.transform);
+        }
+
+        if(lockedON == true)
+        {
+            chargeToEnemy(attack.transform, enemy, 2);
         }
         if(isRecharging == true)
         {
@@ -95,8 +103,16 @@ public class PlayerAttackScript : MonoBehaviour
 
         if (angles >= -13 && angles <= -10)
         {
-            Debug.Log("sus");
+            Debug.Log("locked on");
             attackIsLive = false;
+            lockedON = true;
         }
+    }
+
+    public void chargeToEnemy(Transform attack, Transform enemy, float speed)
+    {
+        attack.position = Vector3.MoveTowards(attack.position, enemy.position, speed * Time.deltaTime);
+        
+
     }
 }
