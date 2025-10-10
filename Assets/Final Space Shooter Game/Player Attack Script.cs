@@ -60,7 +60,12 @@ public class PlayerAttackScript : MonoBehaviour
         if (stamina >= 5)
         {
             Vector2 BombSpawn = target.position * radius;
-            Instantiate(Bomb, BombSpawn, Quaternion.identity);
+            GameObject attack = Instantiate(Bomb, BombSpawn, Quaternion.identity);
+
+            Vector3 orbit = target.position;
+
+            Vector2 direction = 
+
         }
  
 
