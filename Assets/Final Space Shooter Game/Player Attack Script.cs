@@ -93,10 +93,10 @@ public class PlayerAttackScript : MonoBehaviour
 
         attack.transform.position = new Vector3(x, y, attack.transform.position.z);
 
-        if(angles >= -1 && angles <= 0)
+        if (angles >= -13 && angles <= -10)
         {
             Debug.Log("sus");
-            return;
+            attackIsLive = false;
         }
     }
 }
