@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -91,5 +92,11 @@ public class PlayerAttackScript : MonoBehaviour
         angles = angleInRad * Mathf.Rad2Deg;
 
         attack.transform.position = new Vector3(x, y, attack.transform.position.z);
+
+        if(angles >= -1 && angles <= 0)
+        {
+            Debug.Log("sus");
+            return;
+        }
     }
 }
