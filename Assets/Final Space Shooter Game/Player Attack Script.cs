@@ -13,6 +13,7 @@ public class PlayerAttackScript : MonoBehaviour
 
     public Transform enemy;
 
+    public float angles;
 
     public bool isRecharging = false;
     public bool attackIsLive = false;
@@ -47,7 +48,7 @@ public class PlayerAttackScript : MonoBehaviour
 
         if(attackIsLive == true)
         {
-            MoveAttack(2, 20, enemy, attack.transform);
+            MoveAttack(2, 2, enemy, attack.transform);
         }
         if(isRecharging == true)
         {
@@ -81,10 +82,13 @@ public class PlayerAttackScript : MonoBehaviour
 
         float angleInRad = Mathf.Atan2(direction.y, direction.x);
 
+
         angleInRad += speed * Time.deltaTime;
 
         float x = orbit.x + radius * Mathf.Cos(angleInRad);
         float y = orbit.y + radius * Mathf.Sin(angleInRad);
+
+        angles = angleInRad * Mathf.Rad2Deg;
 
         attack.transform.position = new Vector3(x, y, attack.transform.position.z);
     }
