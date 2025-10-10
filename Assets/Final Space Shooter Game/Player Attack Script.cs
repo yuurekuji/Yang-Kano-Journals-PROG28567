@@ -113,6 +113,5 @@ public class PlayerAttackScript : MonoBehaviour
     {
         attack.position = Vector3.MoveTowards(attack.position, enemy.position, speed * Time.deltaTime);
         
-
     }
 }
