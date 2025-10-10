@@ -21,53 +21,64 @@ public class PlayerAttackScript : MonoBehaviour
     public bool attackIsLive = false;
     public bool lockedON = false;
 
-    GameObject attack;
 
 
+    public float distanceBetween;
+    GameObject bombattack;
+    GameObject EnemyObject;
+
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy").transform; // this will find the gameobject with the enemy tag and then get the transform.
-
+        EnemyObject = GameObject.FindGameObjectWithTag("Enemy");
     }
 
     // Update is called once per frame
     void Update()
-    { 
-        if (Input.GetKeyDown(KeyCode.Space))
+    {
+
+        distanceBetween = Vector2.Distance(transform.position, enemy.transform.position);
+
+        if (distanceBetween < 4)
         {
-            if (stamina >= 5)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Vector2 BombSpawn = enemy.position * 2;
+                if (stamina >= 5)
+                {
+                    Vector2 BombSpawn = enemy.position * 2;
 
-                attack = Instantiate(Bomb, BombSpawn, Quaternion.identity);
+                    bombattack = Instantiate(Bomb, BombSpawn, Quaternion.identity);
 
+                }
+
+                stamina = 0;
+                isRecharging = true;
+
+                attackIsLive = true;
             }
 
-            stamina = 0;
-            isRecharging = true;
+            if (attackIsLive == true)
+            {
+                MoveAttack(2, 2, enemy, bombattack.transform);
+            }
 
-            attackIsLive = true;
+            if (lockedON == true)
+            {
+                chargeToEnemy(bombattack.transform, enemy, 2);
+            }
+            if (isRecharging == true)
+            {
+                Invoke("replenishStamina", 2f);
+            }
+
+            if (stamina >= 5f)
+            {
+                isRecharging = false;
+            }
         }
 
-        if(attackIsLive == true)
-        {
-            MoveAttack(2, 2, enemy, attack.transform);
-        }
-
-        if(lockedON == true)
-        {
-            chargeToEnemy(attack.transform, enemy, 2);
-        }
-        if(isRecharging == true)
-        {
-            Invoke("replenishStamina", 2f);
-        }
-
-        if(stamina >= 5f)
-        {
-            isRecharging=false;
-        }
 
     }
     
@@ -113,5 +124,13 @@ public class PlayerAttackScript : MonoBehaviour
     {
         attack.position = Vector3.MoveTowards(attack.position, enemy.position, speed * Time.deltaTime);
         
+        float distance = Vector2.Distance(attack.position, enemy.position);
+
+        if(distance <= 0.5)
+        {
+            Destroy(bombattack);
+            lockedON = false;
+            Destroy(EnemyObject);
+        }
     }
 }
