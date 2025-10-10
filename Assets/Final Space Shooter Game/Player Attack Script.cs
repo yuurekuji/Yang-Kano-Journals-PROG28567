@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerAttackScript : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class PlayerAttackScript : MonoBehaviour
 
 
     public bool isRecharging = false;
+    public bool attackIsLive = false;
+
+    GameObject attack;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,11 +31,24 @@ public class PlayerAttackScript : MonoBehaviour
     { 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpecialAttack(2, 2, enemy);
+            if (stamina >= 5)
+            {
+                Vector2 BombSpawn = enemy.position * 2;
+
+                attack = Instantiate(Bomb, BombSpawn, Quaternion.identity);
+
+            }
+
             stamina = 0;
             isRecharging = true;
+
+            attackIsLive = true;
         }
 
+        if(attackIsLive == true)
+        {
+            MoveAttack(2, 20, enemy, attack.transform);
+        }
         if(isRecharging == true)
         {
             Invoke("replenishStamina", 2f);
@@ -55,19 +72,20 @@ public class PlayerAttackScript : MonoBehaviour
         
     }
 
-    public void SpecialAttack(float radius, float speed, Transform target)
+    public void MoveAttack(float radius, float speed, Transform target, Transform attack)
     {
-        if (stamina >= 5)
-        {
-            Vector2 BombSpawn = target.position * radius;
-            GameObject attack = Instantiate(Bomb, BombSpawn, Quaternion.identity);
+        // moving the bomb
+        Vector3 orbit = target.position;
 
-            Vector3 orbit = target.position;
+        Vector2 direction = attack.transform.position - orbit;
 
-            Vector2 direction = 
+        float angleInRad = Mathf.Atan2(direction.y, direction.x);
 
-        }
- 
+        angleInRad += speed * Time.deltaTime;
 
+        float x = orbit.x + radius * Mathf.Cos(angleInRad);
+        float y = orbit.y + radius * Mathf.Sin(angleInRad);
+
+        attack.transform.position = new Vector3(x, y, attack.transform.position.z);
     }
 }
