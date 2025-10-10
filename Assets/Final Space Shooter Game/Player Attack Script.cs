@@ -39,7 +39,7 @@ public class PlayerAttackScript : MonoBehaviour
     void Update()
     {
 
-        distanceBetween = Vector2.Distance(transform.position, enemy.transform.position);
+        distanceBetween = Vector2.Distance(transform.position, enemy.transform.position); // currently this gives an error after you destroy the enemy as there is no enemies that exist anymore.
 
         if (distanceBetween < 4)
         {
