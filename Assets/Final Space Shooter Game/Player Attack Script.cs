@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using System;
 using UnityEngine;
 
 public class PlayerAttackScript : MonoBehaviour
@@ -9,7 +11,10 @@ public class PlayerAttackScript : MonoBehaviour
     public GameObject Bomb;
 
     public Transform enemy;
-    
+
+
+    public bool isRecharging = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,17 +24,24 @@ public class PlayerAttackScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-
-
-        replenishStamina(); 
-
+    { 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SpecialAttack(2, 2, enemy);
             stamina = 0;
-  
+            isRecharging = true;
         }
+
+        if(isRecharging == true)
+        {
+            Invoke("replenishStamina", 2f);
+        }
+
+        if(stamina >= 5f)
+        {
+            isRecharging=false;
+        }
+
     }
     
     // code to replenish stamina
@@ -38,7 +50,9 @@ public class PlayerAttackScript : MonoBehaviour
         if(stamina<= 5f) // checks if stamina is under 5 and then consitently replenishes stamina by a replenish rate amount.
         {
             stamina += replenishRate * Time.deltaTime;
+            
         }
+        
     }
 
     public void SpecialAttack(float radius, float speed, Transform target)
