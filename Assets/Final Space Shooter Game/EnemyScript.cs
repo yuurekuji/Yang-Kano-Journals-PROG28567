@@ -24,12 +24,17 @@ public class EnemyScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Enemy = transform.position;
+       
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Enemy = transform.position;
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
+
         EnemyDetection();
         DamageDetection();
     }
@@ -49,28 +54,31 @@ public class EnemyScript : MonoBehaviour
             Vector3 point = new Vector3(x, y, 0) * DetectionRadius + Enemy;
 
             Points.Add(point);
-
+    
         }
+        
 
         for (int p = 1; p < Points.Count; p++)
         {
-            float Detectdistance = Vector3.Distance(Player.transform.position, Enemy);
 
-            if (Detectdistance <= DetectionRadius)
-            {
-                col = Color.red;
-                //Debug.Log("sus");
-                transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, movingSpeed * Time.deltaTime);
-            }
-            else
-            {
-                col = Color.green;
-            }
+            
 
             Debug.DrawLine(Points[p - 1], Points[p], col);
 
         }
 
+        float Detectdistance = Vector3.Distance(Player.transform.position, Enemy);
+
+        if (Detectdistance <= DetectionRadius)
+        {
+            col = Color.red;
+            Debug.Log("sus");
+            transform.position = Vector2.MoveTowards(transform.position, Player.position, movingSpeed * Time.deltaTime);
+        }
+        else
+        {
+            col = Color.green;
+        }
 
     }
 
