@@ -328,8 +328,8 @@ MonoBehaviour:
   DamageRadius: 2
   Enemy: {x: 0, y: 0, z: 0}
   life: 0
-  movingSpeed: 0
-  Player: {fileID: 945756306}
+  movingSpeed: 1
+  Player: {fileID: 0}
 --- !u!1 &945756304
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 945756307}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -433,6 +433,11 @@ MonoBehaviour:
   stamina: 10
   Bomb: {fileID: 1273894435109820, guid: b262926197932c945b68169dd6fd6c5c, type: 3}
   enemy: {fileID: 0}
+  angles: 0
+  isRecharging: 0
+  attackIsLive: 0
+  lockedON: 0
+  distanceBetween: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
